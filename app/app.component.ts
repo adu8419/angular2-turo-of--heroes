@@ -1,25 +1,13 @@
 import { Component } from '@angular/core';
 
-export class Hero {
-	id: number;
-	name: string;
-}
+import { Hero } from './hero';
+import { HeroDetailComponent } from './hero-detail.component';
 
 @Component({
 	selector: 'my-app',
 	template: `
 		<h1>{{title}}</h1>
-		<div *ngIf="selectedHero">
-			<h2>{{selectedHero.name}} details!</h2>
-			<div>
-				<label for="">id:</label>
-				{{selectedHero.id}}
-			</div>
-			<div>
-				<label for="">name:</label>
-				<input type="text" [(ngModel)]="selectedHero.name" placeholder="name" />
-			</div>
-		</div>
+		<my-hero-detail [hero]="selectedHero"></my-hero-detail>
 		<h2>My Heroes</h2>
 		<ul class="heroes">
 			<li *ngFor="let hero of heroes" (click)="select(hero)" [class.selected]="hero === selectedHero">
@@ -28,6 +16,7 @@ export class Hero {
 			</li>
 		</ul>
 	`,
+	directives: [HeroDetailComponent],
 	styles: [`
 		.selected {
 		    background-color: #CFD8DC !important;
