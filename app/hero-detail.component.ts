@@ -1,7 +1,9 @@
 import { 
 	Component, 
 	Input, 
-	OnInit  } from '@angular/core';
+	Output,
+	OnInit,
+	EventEmitter  } from '@angular/core';
 import { RouteParams } from '@angular/router-deprecated';
 
 import { Hero } from './hero';
@@ -45,7 +47,7 @@ export class HeroDetailComponent implements OnInit{
 		    .save(this.hero)
 		    .then(hero => {
 		       this.hero = hero;
-		       this.getBack(hero);	
+		       this.goBack(hero);	
 		    })
 		    .catch(error => this.error = error);
 	}
